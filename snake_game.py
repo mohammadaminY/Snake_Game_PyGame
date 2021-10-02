@@ -14,9 +14,30 @@ class Game:
 
         self.screen.fill(self.WHITE)
         self.snake = pygame.draw.rect(self.screen, self.BLUE, (20, 20, 20, 20))
+        self._move = 't'
 
     def draw(self):
         self.snake = pygame.draw.rect(self.screen, (0, 0, 128), self.snake)
+
+    @property
+    def move(self):
+        return self._move
+
+    @move.setter
+    def move(self, value):
+        if value in ('t', 'b', 'r', 'l'):
+            self._move = value
+        raise ValueError('The move value must be equal "t" or "b" or "r" or "l"')
+
+    def move_on(self,move):
+        if move == 't':
+            pass
+        elif move == 'b':
+            pass
+        elif move == 'b':
+            pass
+        elif move == 'b':
+            pass
 
     def start(self):
         while True:
@@ -30,12 +51,10 @@ class Game:
             self.key_handler()
             pygame.display.update()
 
-            self.clock.tick(40)
+            self.clock.tick(50)
 
-    def key_handler(self):
+    def key_handler(self, move=5):
         key = pygame.key.get_pressed()
-        move = 5
-        # and self.snake.top != self.screen.get_height() and self.snake.left != self.screen.get_width()
 
         if key[pygame.K_LEFT] and self.snake.left != 0:
             self.snake.move_ip(-move, 0)
