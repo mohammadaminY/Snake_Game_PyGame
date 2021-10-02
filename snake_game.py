@@ -1,6 +1,7 @@
 import pygame
 from pygame import locals
 
+
 class Game:
     def __init__(self):
         pygame.init()
@@ -14,7 +15,7 @@ class Game:
         self.screen.fill(self.WHITE)
         self.snake = pygame.draw.rect(self.screen, self.BLUE, (20, 20, 20, 20))
 
-    def drow(self):
+    def draw(self):
         self.snake = pygame.draw.rect(self.screen, (0, 0, 128), self.snake)
 
     def start(self):
@@ -25,7 +26,7 @@ class Game:
                     exit()
 
             self.screen.fill((255, 255, 255))
-            self.drow()
+            self.draw()
             self.key_handler()
             pygame.display.update()
 
@@ -44,8 +45,8 @@ class Game:
             self.snake.move_ip(0, -move)
         elif key[pygame.K_DOWN] and self.snake.top != (self.screen.get_height() - self.snake.height):
             self.snake.move_ip(0, move)
-          
-          
+
+
 if __name__ == "__main__":
-  game = Game()
-  game.start()
+    game = Game()
+    game.start()
